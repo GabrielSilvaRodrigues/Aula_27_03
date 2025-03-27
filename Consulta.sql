@@ -1,0 +1,116 @@
+CREATE TABLE Médico 
+( 
+ CRM INT PRIMARY KEY,  
+ nome_med INT,  
+ CPF_Med INT,  
+); 
+
+CREATE TABLE Paciente 
+( 
+ cpf_pac INT PRIMARY KEY,  
+ nome_pac INT,  
+); 
+
+CREATE TABLE Especialidade 
+( 
+ nome_esp INT,  
+ id_esp INT PRIMARY KEY,  
+); 
+
+CREATE TABLE Telefone 
+( 
+ id_tel INT PRIMARY KEY,  
+ num INT,  
+ descricao INT,  
+ ddd INT,  
+); 
+
+CREATE TABLE Convénio 
+( 
+ id INT PRIMARY KEY,  
+ nome_convenio INT,  
+ data_validade INT,  
+); 
+
+CREATE TABLE Planos 
+( 
+ id_plano INT PRIMARY KEY,  
+ tipo INT,  
+); 
+
+CREATE TABLE Exames 
+( 
+ id_ex INT PRIMARY KEY,  
+ nome_ex INT,  
+); 
+
+CREATE TABLE Rel 
+( 
+ CRM INT PRIMARY KEY,  
+); 
+
+CREATE TABLE Rel1 
+( 
+ cpf_pac INT PRIMARY KEY,  
+); 
+
+CREATE TABLE Rel11 
+( 
+ cpf_pac INT PRIMARY KEY,  
+ id_tel INT PRIMARY KEY,  
+); 
+
+CREATE TABLE Rel111 
+( 
+ id_tel INT PRIMARY KEY,  
+ CRM INT PRIMARY KEY,  
+); 
+
+CREATE TABLE Rel1111 
+( 
+ id INT PRIMARY KEY,  
+ cpf_pac INT PRIMARY KEY,  
+); 
+
+CREATE TABLE Rel11111 
+( 
+ CRM INT PRIMARY KEY,  
+ id_esp INT,  
+); 
+
+CREATE TABLE Rel111111 
+( 
+ id_ex INT PRIMARY KEY,  
+); 
+
+CREATE TABLE Rel1111111 
+( 
+ id INT PRIMARY KEY,  
+ id_plano INT PRIMARY KEY,  
+); 
+
+CREATE TABLE Rel11111111 
+( 
+ id_esp INT PRIMARY KEY,  
+); 
+
+CREATE TABLE Rel111111111 
+( 
+ id_plano INT PRIMARY KEY,  
+); 
+
+ALTER TABLE Rel ADD FOREIGN KEY(CRM) REFERENCES Médico (CRM)
+ALTER TABLE Rel1 ADD FOREIGN KEY(cpf_pac) REFERENCES Paciente (cpf_pac)
+ALTER TABLE Rel11 ADD FOREIGN KEY(cpf_pac) REFERENCES Paciente (cpf_pac)
+ALTER TABLE Rel11 ADD FOREIGN KEY(id_tel) REFERENCES Telefone (id_tel)
+ALTER TABLE Rel111 ADD FOREIGN KEY(id_tel) REFERENCES Telefone (id_tel)
+ALTER TABLE Rel111 ADD FOREIGN KEY(CRM) REFERENCES Médico (CRM)
+ALTER TABLE Rel1111 ADD FOREIGN KEY(id) REFERENCES Convénio (id)
+ALTER TABLE Rel1111 ADD FOREIGN KEY(cpf_pac) REFERENCES Paciente (cpf_pac)
+ALTER TABLE Rel11111 ADD FOREIGN KEY(CRM) REFERENCES Médico (CRM)
+ALTER TABLE Rel11111 ADD FOREIGN KEY(id_esp) REFERENCES Especialidade (id_esp)
+ALTER TABLE Rel111111 ADD FOREIGN KEY(id_ex) REFERENCES Exames (id_ex)
+ALTER TABLE Rel1111111 ADD FOREIGN KEY(id) REFERENCES Convénio (id)
+ALTER TABLE Rel1111111 ADD FOREIGN KEY(id_plano) REFERENCES Planos (id_plano)
+ALTER TABLE Rel11111111 ADD FOREIGN KEY(id_esp) REFERENCES Especialidade (id_esp)
+ALTER TABLE Rel111111111 ADD FOREIGN KEY(id_plano) REFERENCES Planos (id_plano)
