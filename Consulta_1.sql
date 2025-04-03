@@ -12,4 +12,6 @@ CREATE TABLE paciente(
 	rg VARCHAR(11) NOT NULL
 );
 
-CREATE TABLE atende
+CREATE TABLE atende(
+	
+);
